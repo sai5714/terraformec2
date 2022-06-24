@@ -1,4 +1,4 @@
-name: terraformec2
+name: Terraform project
 on: [pull_request]
 
 env:
