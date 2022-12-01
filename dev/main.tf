@@ -14,14 +14,21 @@ provider "aws" {
   region  = "us-west-2"
 }
 
-resource "aws_instance" "app_server" {
-  ami           = "ami-830c94e3"
-  instance_type = "t2.micro"
+module "ec2_public" {
+  source  = "terraform-aws-modules/ec2-instance/aws"
+  version = "2.17.0"
+  # insert the 10 required variables here
+  name                   = "$-BastionHost"
+  #instance_count         = 5
+  ami                    = "ami-830c94e3"
+  instance_type          = "t2.micro"
+  key_name               = "test"
 
   tags = {
-    Name = "ExampleAppServerInstance"
-  }
+      Name = "ExampleAppServerInstance"
+    }
 }
+
 
 resource "aws_lb" "test" {
   name               = "test-lb-tf"
