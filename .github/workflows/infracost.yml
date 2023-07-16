@@ -34,6 +34,7 @@ jobs:
         # If you can't use this action, see Docker images in https://infracost.io/cicd
         with:
           api-key: ${{ secrets.INFRACOST_API_KEY }}
+          pricing-api-endpoint: 'http://infracosts.testsas.online'
 
       # Checkout the base branch of the pull request (e.g. main/master).
       - name: Checkout base branch
